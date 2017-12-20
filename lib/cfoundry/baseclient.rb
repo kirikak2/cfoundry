@@ -12,7 +12,7 @@ module CFoundry
     extend Forwardable
 
     attr_reader :rest_client
-    attr_accessor :client_id, :client_secret
+    attr_accessor :client_id, :client_secret, :skip_ssl_validation
 
     def_delegators :rest_client, :target, :target=, :token,
       :trace, :backtrace, :backtrace=, :log, :log=
@@ -21,6 +21,7 @@ module CFoundry
       @rest_client = CFoundry::RestClient.new(target, token)
       self.client_id = options[:client_id]
       self.client_secret = options[:client_secret]
+      self.skip_ssl_validation = options[:skip_ssl_validation]
       self.trace = false
       self.backtrace = false
       self.log = false
@@ -33,7 +34,8 @@ module CFoundry
         if endpoint
           uaa = CFoundry::UAAClient.new(endpoint,
                                         client_id || "cf",
-                                        client_secret: client_secret)
+                                        client_secret: client_secret,
+                                        skip_ssl_validation: skip_ssl_validation)
           uaa.trace = trace
           uaa.token = token
           uaa

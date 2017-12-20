@@ -9,6 +9,7 @@ module CFoundry
       @target = target
       @client_id = client_id
       @client_secret = options[:client_secret]
+      @skip_ssl_validation = options[:skip_ssl_validation]
       @uaa_info_client = uaa_info_client_for(target)
     end
 
@@ -93,11 +94,15 @@ module CFoundry
     private
 
     def uaa_info_client_for(url)
-      CF::UAA::Info.new(url, :symbolize_keys => true)
+      options = { :symbolize_keys => true }
+      options[:skip_ssl_validation] = @skip_ssl_validation if @skip_ssl_validation
+      CF::UAA::Info.new(url, options)
     end
 
     def token_issuer
-      @token_issuer ||= CF::UAA::TokenIssuer.new(target, client_id, client_secret, :symbolize_keys => true)
+      options = { :symbolize_keys => true }
+      options[:skip_ssl_validation] = @skip_ssl_validation if @skip_ssl_validation
+      @token_issuer ||= CF::UAA::TokenIssuer.new(target, client_id, client_secret, options)
       @token_issuer.logger.level = @trace ? Logger::Severity::TRACE : 1
       @token_issuer
     end
