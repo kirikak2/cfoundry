@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files    = Dir.glob("spec/**/*")
   s.require_paths = %w[lib]
 
-  s.add_dependency "activemodel", "<5.0.0", ">= 3.2.13"
+  s.add_dependency "activemodel", "<6.0.0", ">= 3.2.13"
   s.add_dependency "cf-uaa-lib", "~> 3.8.0"
   s.add_dependency "jwt", "~> 1.5"
   s.add_dependency "multi_json", "~> 1.7"
