@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :domain, :class => CFoundry::V2::Domain do
     sequence(:guid) { |n| "domain-guid-#{n}" }
     transient do

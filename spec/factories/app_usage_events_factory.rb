@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :app_usage_event, :class => CFoundry::V2::AppUsageEvent do
     sequence(:guid) { |n| "app-usage-event-guid-#{n}" }
     created_at '2013-01-01T12:00:00+00:00'

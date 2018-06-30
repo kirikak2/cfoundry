@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :event, :class => CFoundry::V2::Event do
     sequence(:guid) { |n| "event-guid-#{n}" }
     timestamp '2013-01-01T12:00:00+00:00'

@@ -1,8 +1,8 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user, :class => CFoundry::V2::User do
     sequence(:guid) { |n| "user-guid-#{n}" }
     transient do
-      client { FactoryGirl.build(:client) }
+      client { FactoryBot.build(:client) }
     end
 
     initialize_with { new(guid, client) }
