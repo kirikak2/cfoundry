@@ -3,6 +3,9 @@ require "spec_helper"
 describe CFoundry::V2::Client do
   before do
     WebMock.allow_net_connect!
+    stub_request(:any, "#{environment_api}/info").to_return(
+      body: { authorization_endpoint: a1_domain }.to_json
+    )
   end
 
   let(:environment_api) { ENV["CF_V2_TEST_TARGET"] || "api.#{a1_domain}"}
