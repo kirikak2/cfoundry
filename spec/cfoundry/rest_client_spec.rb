@@ -39,7 +39,7 @@ describe CFoundry::RestClient do
 
       it 'should always include a content length' do
         check_request do |req|
-          expect(req.headers["Content-Length"]).to eql(0)
+          expect(req.headers["Content-Length"]).to eql(0.to_s)
         end
       end
 
@@ -49,7 +49,7 @@ describe CFoundry::RestClient do
 
           it 'includes a content length matching the payload size' do
             check_request do |req|
-              expect(req.headers["Content-Length"]).to eql("some payload".length)
+              expect(req.headers["Content-Length"]).to eql("some payload".length.to_s)
             end
           end
         end
@@ -59,7 +59,7 @@ describe CFoundry::RestClient do
 
           it 'includes a content length matching the JSON encoded length' do
             check_request do |req|
-              expect(req.headers["Content-Length"]).to eql('{"key":"value"}'.length)
+              expect(req.headers["Content-Length"]).to eql('{"key":"value"}'.length.to_s)
             end
           end
         end

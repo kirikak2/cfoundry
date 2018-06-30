@@ -22,20 +22,20 @@ Gem::Specification.new do |s|
   s.add_dependency "cf-uaa-lib", "~> 3.8.0"
   s.add_dependency "jwt", "~> 1.5"
   s.add_dependency "multi_json", "~> 1.7"
-  s.add_dependency "multipart-post", "~> 1.1"
+  s.add_dependency "multipart-post", "~> 2.0"
   s.add_dependency "rubyzip", "~> 0.9"
 
   s.add_development_dependency 'bundler', '~> 1.9'
   s.add_development_dependency "pry"
   s.add_development_dependency "pry-stack_explorer"
-  s.add_development_dependency "factory_girl"
+  s.add_development_dependency "factory_bot"
   s.add_development_dependency "gem-release"
   s.add_development_dependency "json_pure", "~> 1.8"
   s.add_development_dependency "rake", ">= 0.9", "< 11.0"
   s.add_development_dependency "rspec", "~> 2.14"
   s.add_development_dependency "shoulda-matchers", "~> 2.5.0"
   s.add_development_dependency "timecop", "~> 0.6.1"
-  s.add_development_dependency "webmock", "~> 1.9"
+  s.add_development_dependency "webmock", "~> 2.3"
   s.add_development_dependency "putsinator"
   s.add_development_dependency "version"
 end
